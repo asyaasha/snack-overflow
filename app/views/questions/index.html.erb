@@ -1,0 +1,13 @@
+<div class="container">
+<h1>Snack Overflow</h1>
+
+<% if @questions %>
+  <% @questions.each do |question| %>
+    <table>
+    <tr>
+      <td><%= question.title %> <%= question.created_at.to_date %></td>
+      <tr>
+    </table>
+  <%end%>
+<%end%>
+</div>
