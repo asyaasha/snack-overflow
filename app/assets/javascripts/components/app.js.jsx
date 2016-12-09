@@ -1,25 +1,9 @@
-function Question(props) {
-  return(
-    <div>{props.question.title}</div>
-  );
-}
-class QuestionView extends React.Component {
-  render() {
-    const questions = this.props.questions || [];
-    console.log(questions);
-    return(
-      <div>
-        {questions.map((question, index) => <Question question={question} key={index} />)}
-      </div>
-    )
-  }
-}
-
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
       questions:[],
+      users:[]
     }
   }
 
@@ -39,13 +23,19 @@ class App extends React.Component {
     })
   }
 
+
+
   componentDidMount() {
     this.fetchQuestions();
+
   }
 
   render() {
     return(
+      <div>
       <QuestionView questions={this.state.questions} />
+
+      </div>
       );
   }
 }
