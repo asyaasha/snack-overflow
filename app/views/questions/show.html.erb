@@ -1,6 +1,8 @@
 <div class="container">
-<h2><%= @question.title %></h2>
-<p><%= @question.text %><span> asked by <%= @question.user.username %></span></p>
-
-
-  </div>
+  <h2><%= @question.title %></h2>
+  <p><%= @question.text %><span> asked by <%= @question.user.username %></span></p>
+  <% @question.answers.each do |answer| %>
+    <p><%= answer.text %></p>
+  <% end %>
+  <%= render 'answers/form' %>
+</div>

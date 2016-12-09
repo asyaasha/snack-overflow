@@ -14,6 +14,7 @@
   <body>
     <nav class="blue-grey lighten-4">
       <ul>
+        <li><%= link_to "Snack Overflow", questions_path, class: "black-text" %></li>
         <% if logged_in? %>
           <li><%= link_to "Ask a Question", new_question_path, class: "black-text" %></li>
           <li><%= link_to "#{current_user.username}", user_path(current_user), class: "black-text" %></li>

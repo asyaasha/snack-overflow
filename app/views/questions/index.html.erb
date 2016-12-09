@@ -1,13 +1,20 @@
 <div class="container">
-<h1>Snack Overflow</h1>
+  <h1>Snack Overflow</h1>
 
-<% if @questions %>
-  <% @questions.each do |question| %>
-    <table>
-    <tr>
-      <td><%= question.title %> <%= question.created_at.to_date %></td>
-      <tr>
-    </table>
+  <% if @questions %>
+    <% @questions.each do |question| %>
+      <table class="section">
+        <tr>
+          <td><strong><%= link_to "#{question.title}", question_path(question) %></strong><span> asked <%= question.time_since_creation %></span></td>
+          <% if logged_in? && authorized?(question) %>
+            <td><%= link_to 'Edit', edit_question_path(question) %></td>
+            <td><%= link_to 'Destroy', question_path(question),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      </table>
+       <div class="divider"></div>
+    <%end%>
   <%end%>
-<%end%>
 </div>

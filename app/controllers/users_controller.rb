@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to questions_url
+      redirect_to questions_path
     else
       render 'new'
     end
