@@ -1,1 +1,11 @@
-edit.html.erb
+<h2>Edit Answer</h2>
+
+<%= form_for [@question, @answer] do |f| %>
+  <p>
+    <%= f.label :text %>
+    <%= f.text_field :text %>
+  </p>
+  <p>
+    <%= f.submit "Edit Answer"%>
+  </p>
+<% end %>

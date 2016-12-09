@@ -12,19 +12,22 @@
   </head>
 
   <body>
+    <div class="nav-wrapper">
     <nav class="blue-grey lighten-4">
-      <ul>
-        <li><%= link_to "Snack Overflow", questions_path, class: "black-text" %></li>
+      <img src="https://s-media-cache-ak0.pinimg.com/originals/c3/eb/42/c3eb422708f7d7691f985f8541945197.png" style="width:75px;height:70px;">
+      <ul class="right">
+        <li ><%= link_to "Snack Overflow", questions_path, class: "white-text" %></li>
         <% if logged_in? %>
-          <li><%= link_to "Ask a Question", new_question_path, class: "black-text" %></li>
-          <li><%= link_to "#{current_user.username}", user_path(current_user), class: "black-text" %></li>
-          <li><%= link_to "Log Out", session_path(session), method: :delete, class: "black-text" %></li>
+          <li><%= link_to "Ask a Question", new_question_path, class: "white-text" %></li>
+          <li><%= link_to "#{current_user.username}", user_path(current_user), class: "white-text" %></li>
+          <li><%= link_to "Log Out", session_path(session), method: :delete, class: "white-text" %></li>
         <% else %>
-          <li><%= link_to "Create an Account", new_user_path, class: "black-text" %></li>
-          <li><%= link_to "Log In", new_session_path, class: "black-text" %></li>
+          <li><%= link_to "Create an Account", new_user_path, class: "white-text" %></li>
+          <li><%= link_to "Log In", new_session_path, class: "white-text" %></li>
         <% end %>
       </ul>
     </nav>
+  </div>
     <%= yield %>
   </body>
 </html>

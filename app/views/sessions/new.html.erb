@@ -1,4 +1,6 @@
-<h1>Log In</h1>
+<h4 class='red-text text-darken-2'>Log In</h4>
+<br/>
+<br/>
 <% if @errors %>
   <div id="error_explanation">
     <h2>
@@ -11,17 +13,20 @@
     </ul>
   </div>
 <% end %>
-
+ <div class="input-field col s12">
 <%= form_for :session, url: sessions_path do |f| %>
-  <p>
+   <div class="input-field col s6">
     <%= f.label :username %>
     <%= f.text_field :username %>
-  </p>
-  <p>
+  </div>
+  <div class="input-field col s6">
     <%= f.label :password %>
     <%= f.password_field :password %>
-  </p>
+  </div>
   <p>
-    <%= f.submit "Log In" %>
+     <%= button_tag( :class => 'btn btn-default red darken-2') do %>
+  Log In
+<% end %>
   </p>
 <% end %>
+</div>

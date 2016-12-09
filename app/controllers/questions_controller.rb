@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create]
+
   def index
     @questions = Question.all
   end
@@ -12,11 +14,12 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    redirect_to @question unless authorized?(@question)
   end
 
   def create
     @question = Question.new(question_params)
-    @question.user = current_user
+    @question.user = current_user if current_user
     if @question.save
       redirect_to @question
     else
@@ -25,18 +28,26 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(question_params)
-      redirect_to @question
+    if authorized?(@question)
+      if @question.update(question_params)
+        redirect_to @question
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to @question
     end
   end
 
   def destroy
-    @question.destroy
-
-    redirect_to questions_path
+    if authorized?(@question)
+      @question.destroy
+      redirect_to questions_path
+    else
+      redirect_to @question
+    end
   end
+
   private
     def question_params
       params.require(:question).permit(:title, :text)
