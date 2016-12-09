@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  resources :comments
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   root 'questions#index'
