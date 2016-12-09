@@ -1,0 +1,32 @@
+<h4 class='red-text text-darken-2'>Log In</h4>
+<br/>
+<br/>
+<% if @errors %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@errors.count, "errors") %> prohibited this article from being saved:
+    </h2>
+    <ul>
+      <% @errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+ <div class="input-field col s12">
+<%= form_for :session, url: sessions_path do |f| %>
+   <div class="input-field col s6">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <p>
+     <%= button_tag( :class => 'btn btn-default red darken-2') do %>
+  Log In
+<% end %>
+  </p>
+<% end %>
+</div>

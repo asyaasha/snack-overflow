@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <h2><%= @question.title %></h2>
+  <p><%= @question.text %><span> asked by <%= @question.user.username %></span></p>
+  <% if @question.answers %>
+    <h3>Answers:</h3>
+    <% @question.answers.each do |answer| %>
+      <p><%= answer.text %><span>  - answered by <%= answer.user.username %>
+        <% if authorized?(answer) %>
+          <%= link_to 'Edit', edit_question_answer_path(answer.question, answer) %>
+          <%= link_to "Delete", [answer.question, answer], method: :delete %>
+        <% end %>
+      </span></p>
+    <% end %>
+  <% end %>
+  <%= render 'answers/form' %>
+</div>
