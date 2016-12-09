@@ -1,8 +1,8 @@
 class AnswersController < ApplicationController
   def edit
-    @question = Question.find(params[:question_id])
+    # @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
-    redirect_to @question unless authorized?(@answer)
+    redirect_to @answer.question unless authorized?(@answer)
   end
 
   def create
